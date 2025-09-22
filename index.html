@@ -1,0 +1,112 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Online Shopping Discount System</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    label, select, input { margin: 10px 0; display: block; }
+    .result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; }
+  </style>
+</head>
+<body>
+
+  <h2>🛍️ Checkout</h2>
+
+  <label>Number of Items:
+    <input type="number" id="items" min="0">
+  </label>
+
+  <label>Total Amount (₹):
+    <input type="number" id="total" min="0">
+  </label>
+
+  <label>Delivery Location:
+    <select id="location">
+      <option value="city">Within City</option>
+      <option value="outside">Outside City</option>
+    </select>
+  </label>
+
+  <label>Payment Method:
+    <select id="payment">
+      <option value="1">UPI</option>
+      <option value="2">Credit Card</option>
+      <option value="3">Cash on Delivery</option>
+    </select>
+  </label>
+
+  <button onclick="checkout()">Proceed to Checkout</button>
+
+  <div class="result" id="output"></div>
+
+  <script>
+    function checkout() {
+      const items = parseInt(document.getElementById('items').value);
+      const total = parseFloat(document.getElementById('total').value);
+      const location = document.getElementById('location').value;
+      const payment = parseInt(document.getElementById('payment').value);
+      let output = "";
+
+      // 1. Check if cart has at least 1 item
+      if (items < 1) {
+        output = "❌ Cart is empty. Add items to proceed.";
+        document.getElementById('output').innerHTML = output;
+        return;
+      }
+
+      // 2. Shipping charge
+      let shipping = total >= 500 ? 0 : 50;
+
+      // 3. Discount logic
+      let discount = 0;
+      if (total >= 2000) {
+        discount = 0.20;
+      } else if (total >= 1000) {
+        discount = 0.10;
+      } else if (total >= 500) {
+        discount = 0.05;
+      }
+
+      let discountAmount = total * discount;
+      let finalAmount = total - discountAmount + shipping;
+
+      // 4. Payment method
+      let paymentMethod = "";
+      switch (payment) {
+        case 1: paymentMethod = "UPI"; break;
+        case 2: paymentMethod = "Credit Card"; break;
+        case 3: paymentMethod = "Cash on Delivery"; break;
+        default: paymentMethod = "Unknown"; break;
+      }
+
+      // 5. Cashback eligibility
+      let cashback = (payment === 1 || payment === 2) ? "✅ Eligible for cashback" : "❌ Not eligible";
+
+      // 6. COD eligibility
+      let codAllowed = (payment === 3 && finalAmount <= 3000 && location === "city");
+      if (payment === 3 && !codAllowed) {
+        output += "❌ COD not allowed for this order.<br>";
+      }
+
+      // Final output
+      output += `
+        🧾 Items: ${items}<br>
+        💰 Original Total: ₹${total.toFixed(2)}<br>
+        🎁 Discount: ₹${discountAmount.toFixed(2)} (${discount * 100}%)<br>
+        🚚 Shipping: ₹${shipping}<br>
+        🧮 Final Amount: ₹${finalAmount.toFixed(2)}<br>
+        💳 Payment Method: ${paymentMethod}<br>
+        🎉 ${cashback}
+      `;
+
+      document.getElementById('output').innerHTML = output;
+    }
+  </script>
+
+</body>
+</html> -->
+
+
+
+ 
